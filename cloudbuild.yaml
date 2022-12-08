@@ -24,7 +24,7 @@ steps:
     entrypoint: sh
     args:
       - '-c'
-      - 'terraform apply plan.out'
+      - 'terraform apply plan.out -var="deletion_protection=false"'
 
   - id: 'tf destroy'
     name: 'hashicorp/terraform:1.0.0'
