@@ -10,7 +10,7 @@ steps:
     entrypoint: sh
     args:
       - '-c'
-      - 'terraform init'
+      - 'terraform init -upgrade'
 
   - id: 'tf plan'
     name: 'hashicorp/terraform:1.0.0'
