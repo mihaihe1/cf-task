@@ -23,6 +23,15 @@ resource "google_bigquery_table" "table" {
   schema     = file("schemas/bq_table_schema/task-cf-raw.json")
 }
 
+resource "google_pubsub_topic" "topic" {
+  name = var.topic_id
+}
+
+resource "google_pubsub_subscription" "subscription" {
+  name  = var.subscription_id
+  topic = google_pubsub_topic.topic.name
+}
+
 resource "google_storage_bucket" "bucket" {
   name     = var.bucket_id
   location = var.location
@@ -49,6 +58,7 @@ resource "google_cloudfunctions_function" "function" {
   environment_variables = {
     PROJECT_ID    = var.project_id
     OUTPUT_TABLE  = "${google_bigquery_dataset.dataset.dataset_id}.${google_bigquery_table.table.table_id}"
+    TOPIC_ID      = var.topic_id
   }
 }
 

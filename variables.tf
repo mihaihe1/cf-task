@@ -27,3 +27,13 @@ variable "bucket_id" {
   type = string
   default = "task-cf-bucket1"
 }
+
+variable "topic_id" {
+  type = string
+  default = "cf_topic"
+}
+
+variable "subscription_id" {
+  type = string
+  default = "cf_sub"
+}
