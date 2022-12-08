@@ -5,9 +5,9 @@ terraform {
   }
 }
 
-locals {
-  deletion_protection = false
-}
+#locals {
+#  deletion_protection = false
+#}
 
 provider "google" {
 
@@ -26,6 +26,7 @@ resource "google_bigquery_table" "table" {
   dataset_id = google_bigquery_dataset.dataset.dataset_id
   table_id   = var.table_id
   schema     = file("schemas/bq_table_schema/task-cf-raw.json")
+  deletion_protection = false
 }
 
 resource "google_pubsub_topic" "topic" {
