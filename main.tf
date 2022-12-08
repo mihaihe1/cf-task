@@ -5,6 +5,10 @@ terraform {
   }
 }
 
+locals {
+  delete_protection = false
+}
+
 provider "google" {
 
 #  credentials = file("tfsvc.json")
