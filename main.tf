@@ -50,32 +50,32 @@ resource "google_storage_bucket_object" "archive" {
   bucket = google_storage_bucket.bucket.name
 }
 
-#resource "google_cloudfunctions_function" "function" {
-#  name         = "task-function"
-#  description  = "a new function"
-#
-#  runtime      = "python310"
-#  trigger_http = true
-#  entry_point  = "main"
-#
-#  source_archive_bucket = google_storage_bucket.bucket.name
-#  source_archive_object = google_storage_bucket_object.archive.name
-#
-#  environment_variables = {
-#    PROJECT_ID    = var.project_id
-#    OUTPUT_TABLE  = "${google_bigquery_dataset.dataset.dataset_id}.${google_bigquery_table.table.table_id}"
-#    TOPIC_ID      = var.topic_id
-#  }
-#}
-#
-#resource "google_cloudfunctions_function_iam_member" "invoker" {
-#  project        = var.project_id
-#  region         = var.region
-#  cloud_function = google_cloudfunctions_function.function.name
-#
-#  role   = "roles/cloudfunctions.invoker"
-#  member = "allUsers"
-#}
+resource "google_cloudfunctions_function" "function" {
+  name         = "task-function"
+  description  = "a new function"
+
+  runtime      = "python310"
+  trigger_http = true
+  entry_point  = "main"
+
+  source_archive_bucket = google_storage_bucket.bucket.name
+  source_archive_object = google_storage_bucket_object.archive.name
+
+  environment_variables = {
+    PROJECT_ID    = var.project_id
+    OUTPUT_TABLE  = "${google_bigquery_dataset.dataset.dataset_id}.${google_bigquery_table.table.table_id}"
+    TOPIC_ID      = var.topic_id
+  }
+}
+
+resource "google_cloudfunctions_function_iam_member" "invoker" {
+  project        = var.project_id
+  region         = var.region
+  cloud_function = google_cloudfunctions_function.function.name
+
+  role   = "roles/cloudfunctions.invoker"
+  member = "allUsers"
+}
 
 #module "task_cf_function" {
 #  source              = "modules/cloud_function/main.tf"
