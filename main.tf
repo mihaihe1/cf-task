@@ -7,7 +7,7 @@ terraform {
 
 provider "google" {
 
-#  credentials = file("tfsvc.json")
+  credentials = file("tfsvc.json")
 
   project = var.project_id
   region  = var.region
@@ -36,7 +36,7 @@ resource "google_pubsub_subscription" "subscription" {
 resource "google_storage_bucket" "bucket" {
   name     = var.bucket_id
   location = var.location
-#  force_destroy = true
+  force_destroy = true
 }
 
 resource "google_storage_bucket_object" "archive" {
@@ -90,7 +90,7 @@ resource "google_cloudfunctions_function_iam_member" "invoker" {
 #    FUNCTION_REGION = "europe-west1"
 #  }
 #}
-
+#
 #module "task_cf_dataset" {
 #  project_id = var.project_id
 #  dataset_id = "cf_dataset"
