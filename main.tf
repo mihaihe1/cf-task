@@ -1,5 +1,6 @@
 terraform {
   backend "gcs" {
+    bucket  = "cf-test-mihai"
     prefix = "cf/task-cf"
   }
 }
