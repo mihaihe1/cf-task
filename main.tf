@@ -7,7 +7,7 @@ terraform {
 
 provider "google" {
 
-  credentials = file("tfsvc.json")
+#  credentials = file("tfsvc.json")
 
   project = var.project_id
   region  = var.region
