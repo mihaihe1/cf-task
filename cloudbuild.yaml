@@ -26,6 +26,8 @@ steps:
       - 'c'
       - 'terraform apply'
 
+options:
+  logging: CLOUD_LOGGING_ONLY
 
 #options:
 #  substitution_option: 'ALLOW_LOOSE'
