@@ -30,14 +30,14 @@ steps:
     name: 'hashicorp/terraform:1.0.0'
     entrypoint: sh
     args:
-      - 'c'
+      - '-c'
       - 'terraform plan -destroy -out=plan.out'
 
   - id: 'tf destroy plan'
     name: 'hashicorp/terraform:1.0.0'
     entrypoint: sh
     args:
-      - 'c'
+      - '-c'
       - 'terraform apply plan.out'
 
 #  - id: 'tf destroy'
