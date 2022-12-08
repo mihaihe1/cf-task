@@ -6,7 +6,7 @@ terraform {
 }
 
 locals {
-  delete_protection = false
+  deletion_protection = false
 }
 
 provider "google" {
