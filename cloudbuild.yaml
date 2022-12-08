@@ -31,7 +31,7 @@ steps:
     entrypoint: sh
     args:
       - '-c'
-      - 'terraform destroy'
+      - 'terraform destroy -auto-approve'
 
 options:
   logging: CLOUD_LOGGING_ONLY
